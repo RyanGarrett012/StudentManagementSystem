@@ -26,11 +26,11 @@ public class Subject {
         return SubjectGrade;
     }
     //Mutatators!!!
-    public void setSubjectName(){
+    public void setSubjectName(String SubjectName){
         this.SubjectName = SubjectName;
     }
     
-    public void setSubjectGrade(){
+    public void setSubjectGrade(double SubjectGrade){
         this.SubjectGrade = SubjectGrade;
     }
 }
