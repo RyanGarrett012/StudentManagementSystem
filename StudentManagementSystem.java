@@ -1,4 +1,4 @@
-package com.mycompany.studentmanagementsystem;
+package com.mycompany.StudentManagementSystem;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
