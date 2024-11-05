@@ -96,7 +96,7 @@ public class StudentManagementSystem {
             }
         }
     }
-    //method for case 4
+    //method for case 4 : Beta report feature
     private static void viewStudentGrades() {
         Student student = getStudentById();
         if (student != null) {
