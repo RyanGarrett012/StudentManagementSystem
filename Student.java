@@ -24,7 +24,7 @@ public class Student {
     }
 
     //Accessors!!!!
-    public String getName() {
+    public String getStudentName() {
         return StudentName;
     }
     
