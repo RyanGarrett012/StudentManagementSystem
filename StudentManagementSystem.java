@@ -43,7 +43,7 @@ public class StudentManagementSystem {
         }
         scanner.close();
     }
-    //Method for case 2
+    //Method for case 1
     private static void addStudent() {
         System.out.print("Enter student name: ");
         String StudentName = scanner.nextLine();
