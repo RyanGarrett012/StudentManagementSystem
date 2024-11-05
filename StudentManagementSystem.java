@@ -21,7 +21,7 @@ public class StudentManagementSystem {
         subjects.add(new Subject("History"));
         subjects.add(new Subject("Java Programming"));
 
-        boolean exit = false;
+        boolean exit = false; //boolean for case 5 (Terminates program)
         while (!exit) {
             System.out.println("\n1. Add Student");
             System.out.println("2. Enroll Student in Subject");
