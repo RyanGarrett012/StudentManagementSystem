@@ -13,29 +13,28 @@ import java.util.Scanner;
  * @author josef
  */
 public class StudentManagementSystem {
-
     private static Map<Integer, Student> students = new HashMap<>();
     private static List<Subject> subjects = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // CREATING SUBJECTS :D
+        //Creating Subjects :D!!!
         subjects.add(new Subject("Math"));
-        subjects.add(new Subject("Science"));
         subjects.add(new Subject("English"));
+        subjects.add(new Subject("Science"));
         subjects.add(new Subject("History"));
         subjects.add(new Subject("Java Programming"));
 
         boolean exit = false;
         while (!exit) {
-            System.out.println("Select an option: ");
-            System.out.println("1. Add new Student");
+            System.out.println("\n1. Add Student");
             System.out.println("2. Enroll Student in Subject");
-            System.out.println("3. Create or Update Student Grade");
+            System.out.println("3. Add or Update Grade");
             System.out.println("4. View Student Grades");
             System.out.println("5. Exit");
+            System.out.print("Select an option: ");
             int option = scanner.nextInt();
-            scanner.nextLine();  
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1 -> addStudent();
@@ -43,47 +42,47 @@ public class StudentManagementSystem {
                 case 3 -> addOrUpdateGradeForStudent();
                 case 4 -> viewStudentGrades();
                 case 5 -> exit = true;
-                default -> System.out.println("ERROR: Input did not match.");
+                default -> System.out.println("ERROR: Input is invalid. Try again."); //input validation
             }
         }
         scanner.close();
     }
-    //Method allows student to be added
+    //Method for case 2
     private static void addStudent() {
         System.out.print("Enter student name: ");
-        String name = scanner.nextLine();
+        String StudentName = scanner.nextLine();
         System.out.print("Enter student ID: ");
         int id = scanner.nextInt();
-        scanner.nextLine();  // Consume newline
-        students.put(id, new Student(name, id));
-        System.out.println("Student added: " + name);
+        scanner.nextLine();  
+        students.put(id, new Student(StudentName, id));
+        System.out.println("Student added: " + StudentName);
     }
-    //enrolls a student into a subject
+    //method for case 2
     private static void enrollStudentInSubject() {
         Student student = getStudentById();
         if (student != null) {
             System.out.println("Available subjects:");
             for (int i = 0; i < subjects.size(); i++) {
-                System.out.println((i + 1) + ". " + subjects.get(i).getName());
+                System.out.println((i + 1) + ". " + subjects.get(i).getSubjectName());
             }
             System.out.print("Select a subject to enroll in (by number): ");
             int subjectIndex = scanner.nextInt() - 1;
             if (subjectIndex >= 0 && subjectIndex < subjects.size()) {
                 student.enrollInSubject(subjects.get(subjectIndex));
-                System.out.println("Enrolled in " + subjects.get(subjectIndex).getName());
+                System.out.println("Enrolled in " + subjects.get(subjectIndex).getSubjectName());
             } else {
                 System.out.println("Invalid subject choice.");
             }
         }
     }
-    //Grading input method
+    //Method for case 3
     private static void addOrUpdateGradeForStudent() {
         Student student = getStudentById();
         if (student != null) {
             System.out.println("Enrolled subjects:");
             List<Subject> enrolledSubjects = new ArrayList<>(student.getGrades().keySet());
             for (int i = 0; i < enrolledSubjects.size(); i++) {
-                System.out.println((i + 1) + ". " + enrolledSubjects.get(i).getName());
+                System.out.println((i + 1) + ". " + enrolledSubjects.get(i).getSubjectName());
             }
             System.out.print("Select a subject to add or update a grade (by number): ");
             int subjectIndex = scanner.nextInt() - 1;
@@ -101,26 +100,25 @@ public class StudentManagementSystem {
             }
         }
     }
-    
-    
-    //Beta report feature, feel free to add onto this however you need
+    //method for case 4
     private static void viewStudentGrades() {
         Student student = getStudentById();
         if (student != null) {
-            System.out.println("Grades for " + student.getName() + ":");
+            System.out.println("Grades for " + student.getStudentName() + ":");
             for (Map.Entry<Subject, Integer> entry : student.getGrades().entrySet()) {
-                System.out.println(entry.getKey().getName() + ": " + (entry.getValue() != null ? entry.getValue() : "No grade assigned"));
+                System.out.println(entry.getKey().getSubjectName() + ": " + (entry.getValue() != null ? entry.getValue() : "No grade assigned"));
             }
         }
     }
-
+    //connects students to their assigned ID for easier access (database rules!!)
+    //we love primary keys!!!!!
     private static Student getStudentById() {
         System.out.print("Enter student ID: ");
         int id = scanner.nextInt();
-        scanner.nextLine();  
+        scanner.nextLine(); 
         Student student = students.get(id);
         if (student == null) {
-            System.out.println("No student found with ID " + id);
+            System.out.println("No student exists with the ID - " + id);//input validation
         }
         return student;
     }
