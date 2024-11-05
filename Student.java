@@ -1,11 +1,10 @@
 package com.mycompany.mavenproject1;
+import java.util.HashMap;
+import java.util.Map;
 /**
  *
  * @author Josef's PC
  */
-import java.util.HashMap;
-import java.util.Map;
-
 public class Student {
     private String StudentName;
     private int id;
