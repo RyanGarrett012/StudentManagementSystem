@@ -10,28 +10,19 @@ package com.mycompany.studentmanagementsystem;
  */
 public class Subject {
     private String SubjectName;
-    private double SubjectGrade;
-    //Constructor begins
-    public Subject(String SubjectName, double SubjectGrade){
-        SubjectName = SubjectName;
-        SubjectGrade = SubjectGrade;
-                
-    }
-    //Accessors!!!
-    public String getSubjectName(){
-        return SubjectName;
-    }
-    
-    public double getSubjectGrade(){
-        return SubjectGrade;
-    }
-    //Mutatators!!!
-    public void setSubjectName(String SubjectName){
+
+    //constructor!!!
+    public Subject(String name) {
         this.SubjectName = SubjectName;
     }
-    
-    public void setSubjectGrade(double SubjectGrade){
-        this.SubjectGrade = SubjectGrade;
+    //Accessor
+    public String getName() {
+        return SubjectName;
+    }
+
+    @Override //so that subjects are always referenced as a string
+    public String toString() {
+        return SubjectName;
     }
 }
 
