@@ -14,7 +14,7 @@ public class StudentManagementSystem {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //Creating Subjects :D!!!
+        //Creating Subjects :Dd
         subjects.add(new Subject("Math"));
         subjects.add(new Subject("English"));
         subjects.add(new Subject("Science"));
