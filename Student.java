@@ -8,45 +8,56 @@ package com.mycompany.studentmanagementsystem;
  *
  * @author josef
  */
+import java.util.HashMap;
+import java.util.Map;
+
 public class Student {
-    private int StudentID;
-    private String StudentName;
-    private double StudentGrade;
-    
-    /**
-     *
-     * @param StudentID
-     * @param StudentName
-     * @param StudentGrade
-     */
-    //constructor begins
-    public Student(int StudentID, String StudentName, double StudentGrade){
-        StudentID = StudentID;
-        StudentName = StudentName;
-        StudentGrade = StudentGrade;
-    }       
-    //Accessors!!!
-    public int getStudentID(){
-        return StudentID;
-    }
-    public String getStudentName(){
-        return StudentName;
-    }   
-    public double getStudentGrade(){
-        return StudentGrade;
-    }
-    
-    //Mutators!!!
-    public void setStudentID(int StudentID){
-        this.StudentID = StudentID;   
-    }
-    
-    public void setStudentName(String StudentName){
+    private String StudentName; 
+    private int id; 
+    private Map<Subject, Integer> grades; 
+
+    // Constructor!!!!
+    public Student(String name, int id) {
         this.StudentName = StudentName;
+        this.id = id;
+        this.grades = new HashMap<>(); 
+    }
+
+    //Accessors!!!!
+    public String getName() {
+        return StudentName;
     }
     
-    public void setStudentGrade(int StudentGrade){
-        this.StudentGrade = StudentGrade;
+    public int getId() {
+        return id;
     }
-    
+    //Method that enrolls students into a subject
+    public void enrollInSubject(Subject subject) {
+        if (!grades.containsKey(subject)) {
+            grades.put(subject, null); 
+        }
+    }
+    // Method to add or update a grade for a specific subject
+    public void addGrade(Subject subject, int grade) {
+        if (grades.containsKey(subject)) {
+            grades.put(subject, grade); 
+        } else { //input validation
+            System.out.println("Student not enrolled in " + subject.getName());
+        }
+    }
+    //Accessor for a specific grade
+    public Integer getGrade(Subject subject) {
+        return grades.get(subject); 
+    }
+    //Accessor for all grades
+    public Map<Subject, Integer> getGrades() {
+        return grades; 
+    }
+
+    // Ensures a string is returned
+    @Override
+    public String toString() {
+        return "Student{" + "name='" + StudentName + '\'' + ", id=" + id + '}';
+    }
 }
+
