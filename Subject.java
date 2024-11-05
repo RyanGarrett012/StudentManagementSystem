@@ -16,7 +16,7 @@ public class Subject {
         this.SubjectName = SubjectName;
     }
     //Accessor
-    public String getName() {
+    public String getSubjectName() {
         return SubjectName;
     }
 
