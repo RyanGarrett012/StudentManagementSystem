@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject1;
+package com.mycompany.StudentManagementSystem;
 import java.util.HashMap;
 import java.util.Map;
 /**
