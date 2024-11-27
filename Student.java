@@ -26,7 +26,7 @@ public class Student {
     //Method to assign a SUBJECT to a given Student
     public void enrollInSubject(Subject subject) {
         if (!grades.containsKey(subject)) {
-            grades.put(subject, null);
+            grades.put(subject, 0);
         }
     }
     //Can give a grade to a student for a specific Subject
